@@ -1,6 +1,6 @@
 const clock = document.querySelector(".js-clock .clock_text");
 function getTime(){
-  const now = =new Date();
+  const now = new Date();
   const hours = now.getHours();
   const minutes = now.getMinutes();
   const seconds = now.getSeconds();
