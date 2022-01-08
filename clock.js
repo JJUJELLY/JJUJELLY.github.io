@@ -4,7 +4,7 @@ function getTime(){
   const hours = now.getHours();
   const minutes = now.getMinutes();
   const seconds = now.getSeconds();
-  const time = `${hours} : ${minutes} : {$seconds}`;
+  const time = `${hours} : ${minutes} : ${seconds}`;
   clock.innerHTML = time;
   console.log(hours, time);
   return;
