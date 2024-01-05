@@ -23,7 +23,15 @@
 
     // URL이 '/123450'인 경우에는 해당 정보를 보여줍니다
     if (currentURL === '/123450/') {
-      window.location.href = '/123450/'; // 123450 페이지로 리다이렉트
+      document.getElementById('content').innerHTML = '<h1>남민규</h1>';
+    }
+    // URL이 '/dlaudwn'인 경우에는 해당 정보를 보여줍니다
+    else if (currentURL === '/dlaudwn/') {
+      document.getElementById('content').innerHTML = '<h1>이명주</h1>';
+    }
+    // URL이 '/김민서'인 경우에는 해당 정보를 보여줍니다
+    else if (currentURL === '/%EA%B9%80%EB%AF%BC%EC%84%9C/') {
+      document.getElementById('content').innerHTML = '<h1>김민서</h1>';
     }
     // 다른 경우에는 기본적인 환영 메시지를 보여줍니다
     else {
