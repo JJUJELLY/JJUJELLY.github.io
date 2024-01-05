@@ -22,6 +22,10 @@
     input {
       margin-bottom: 10px;
     }
+
+    button {
+      padding: 10px 20px; /* 버튼 크기 조절 */
+    }
   </style>
 </head>
 <body>
@@ -32,7 +36,7 @@
 </div>
 
 <div>
-  <input type="text" id="urlInput" placeholder="주소를 입력하세요">
+  <input type="text" id="urlInput" placeholder="주소를 입력하세요" onkeypress="handleKeyPress(event)">
   <button onclick="redirectToURL()">이동</button>
 </div>
 
@@ -57,6 +61,13 @@
     // 주소가 비어있지 않으면 해당 URL로 이동
     if (inputText.trim() !== '') {
       window.location.href = redirectURL;
+    }
+  }
+
+  // 입력창에서 Enter 키를 눌렀을 때 버튼을 클릭하도록 처리하는 함수
+  function handleKeyPress(event) {
+    if (event.keyCode === 13) { // Enter 키의 keyCode는 13
+      redirectToURL();
     }
   }
 
