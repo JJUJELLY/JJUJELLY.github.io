@@ -11,6 +11,11 @@
   <h1>Welcome to My Website</h1>
 </div>
 
+<div>
+  <input type="text" id="urlInput" placeholder="주소를 입력하세요">
+  <button onclick="redirectToURL()">이동</button>
+</div>
+
 <script>
   // 현재 URL을 가져오는 함수
   function getCurrentURL() {
@@ -40,6 +45,17 @@
     // 다른 경우에는 기본적인 환영 메시지를 보여줍니다
     else {
       document.getElementById('content').innerHTML = '<h1>Welcome to My Website</h1>';
+    }
+  }
+
+  // 입력된 주소로 이동하는 함수
+  function redirectToURL() {
+    var inputText = document.getElementById('urlInput').value;
+    var redirectURL = 'https://jjujelly.github.io/' + inputText;
+
+    // 주소가 비어있지 않으면 해당 URL로 이동
+    if (inputText.trim() !== '') {
+      window.location.href = redirectURL;
     }
   }
 
