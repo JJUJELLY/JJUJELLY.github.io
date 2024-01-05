@@ -26,6 +26,11 @@
     button {
       padding: 10px 20px; /* 버튼 크기 조절 */
     }
+
+    #errorMessage {
+      color: red;
+      font-size: 12px;
+    }
   </style>
 </head>
 <body>
@@ -38,6 +43,7 @@
 <div>
   <input type="text" id="urlInput" placeholder="주소를 입력하세요" onkeypress="handleKeyPress(event)">
   <button onclick="redirectToURL()">이동</button>
+  <div id="errorMessage"></div>
 </div>
 
 <script>
@@ -57,11 +63,16 @@
   function redirectToURL() {
     var inputText = document.getElementById('urlInput').value;
     var redirectURL = 'https://jjujelly.github.io/' + inputText;
+    var validIDs = ['123450', '신하령', '김민서', 'dlaudwn']; // 유효한 ID 목록
+
+    // 주소가 비어있지 않으면서 유효한 ID 목록에 포함되지 않으면 에러 메시지 표시
+    if (inputText.trim() !== '' && !validIDs.includes(inputText)) {
+      document.getElementById('errorMessage').innerText = '등록된 ID가 아닙니다.';
+      return;
+    }
 
     // 주소가 비어있지 않으면 해당 URL로 이동
-    if (inputText.trim() !== '') {
-      window.location.href = redirectURL;
-    }
+    window.location.href = redirectURL;
   }
 
   // 입력창에서 Enter 키를 눌렀을 때 버튼을 클릭하도록 처리하는 함수
