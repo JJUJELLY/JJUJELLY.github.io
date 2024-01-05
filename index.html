@@ -23,11 +23,11 @@
 
     // URL이 '/dlaudwn'인 경우에는 해당 정보를 보여줍니다
     if (currentURL === '/dlaudwn/') {
-      document.getElementById('content').innerHTML = '<h1>이명주</h1>';
+      window.location.href = '/dlaudwn/'; // dlaudwn 페이지로 리다이렉트
     }
     // 다른 경우에는 기본적인 환영 메시지를 보여줍니다
     else {
-      document.getElementById('content').innerHTML = '<h1>Testing</h1>';
+      document.getElementById('content').innerHTML = '<h1>Welcome to My Website</h1>';
     }
   }
 
