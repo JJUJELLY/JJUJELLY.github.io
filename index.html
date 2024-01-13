@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>My Website</title>
   <style>
-    /* 페이지 요소를 가운데로 정렬하는 CSS */
+    /* 페이지 요소 정렬 */
     body {
       display: flex;
       flex-direction: column;
@@ -24,7 +24,7 @@
     }
 
     button {
-      padding: 10px 20px; /* 버튼 크기 조절 */
+      padding: 10px 20px; /* 버튼 크기 */
     }
 
     #errorMessage {
@@ -36,7 +36,6 @@
 <body>
 
 <div id="content">
-  <!-- 이 부분은 JavaScript로 변경될 것입니다 -->
   <h1>Welcome to My Website</h1>
 </div>
 
@@ -47,42 +46,32 @@
 </div>
 
 <script>
-  // 현재 URL을 가져오는 함수
   function getCurrentURL() {
     return window.location.pathname;
   }
 
-  // URL에 따라 다른 콘텐츠를 보여주는 함수
   function showContent() {
     var currentURL = getCurrentURL();
-
-    // ... (이전의 URL 처리 로직은 여기에 있음)
   }
 
-  // 입력된 주소로 이동하는 함수
   function redirectToURL() {
     var inputText = document.getElementById('urlInput').value;
     var redirectURL = 'https://jjujelly.github.io/' + inputText;
-    var validIDs = ['123450', '신하령', '김민서', 'dlaudwn']; // 유효한 ID 목록
+    var validIDs = ['123450', '신하령', '김민서', 'dlaudwn'];
 
-    // 주소가 비어있지 않으면서 유효한 ID 목록에 포함되지 않으면 에러 메시지 표시
     if (inputText.trim() !== '' && !validIDs.includes(inputText)) {
       document.getElementById('errorMessage').innerText = '등록된 ID가 아닙니다.';
       return;
     }
-
-    // 주소가 비어있지 않으면 해당 URL로 이동
     window.location.href = redirectURL;
   }
 
-  // 입력창에서 Enter 키를 눌렀을 때 버튼을 클릭하도록 처리하는 함수
   function handleKeyPress(event) {
     if (event.keyCode === 13) { // Enter 키의 keyCode는 13
       redirectToURL();
     }
   }
 
-  // 페이지가 로드될 때 실행되는 함수
   window.onload = function() {
     showContent();
   };
