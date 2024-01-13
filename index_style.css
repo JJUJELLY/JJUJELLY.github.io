@@ -7,7 +7,7 @@ body {
       margin: 0;
     }
 
-#content {
+content {
       text-align: center;
       margin-bottom: 20px;
     }
@@ -20,7 +20,7 @@ button {
       padding: 10px 20px; /* 버튼 크기 */
     }
 
-#errorMessage {
+errorMessage {
       color: red;
       font-size: 12px;
     }
