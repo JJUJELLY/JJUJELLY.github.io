@@ -1,52 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>My Website</title>
-</head>
-<body>
+<html>
+  <head>
+    <title>Socket.IO chat</title>
+  </head>
+  <body>
+    <ul id="messages"></ul>
+    <form id="form" action="">
+      <input id="input" autocomplete="off" /><button>Send</button>
+    </form>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io();
 
-<div id="content">
-  <h1>Welcome to My Website</h1>
-</div>
+      var messages = document.getElementById("messages");
+      var form = document.getElementById("form");
+      var input = document.getElementById("input");
 
-<div>
-  <input type="text" id="urlInput" placeholder="주소를 입력하세요" onkeypress="handleKeyPress(event)">
-  <button onclick="redirectToURL()">이동</button>
-  <div id="errorMessage"></div>
-</div>
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        if (input.value) {
+          socket.emit("chat message", input.value);
+          input.value = "";
+        }
+      });
 
-<script>
-  function getCurrentURL() {
-    return window.location.pathname;
-  }
-
-  function showContent() {
-    var currentURL = getCurrentURL();
-  }
-
-  function redirectToURL() {
-    var inputText = document.getElementById('urlInput').value;
-    var redirectURL = 'https://jjujelly.github.io/' + inputText;
-    var validIDs = ['123450', '신하령', '김민서', 'dlaudwn'];
-
-    if (inputText.trim() !== '' && !validIDs.includes(inputText)) {
-      document.getElementById('errorMessage').innerText = '등록된 ID가 아닙니다.';
-      return;
-    }
-    window.location.href = redirectURL;
-  }
-
-  function handleKeyPress(event) {
-    if (event.keyCode === 13) {
-      redirectToURL();
-    }
-  }
-
-  window.onload = function() {
-    showContent();
-  };
-</script>
-
-</body>
+      socket.on("chat message", function (msg) {
+        var item = document.createElement("li");
+        console.log(msg);
+        item.textContent = msg;
+        messages.appendChild(item);
+        window.scrollTo(0, document.body.scrollHeight);
+      });
+    </script>
+  </body>
 </html>
