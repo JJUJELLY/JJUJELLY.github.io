@@ -1,61 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>Password Protected Image</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            flex-direction: column;
-        }
-        #password, button {
-            font-size: 20px; /* 폰트 사이즈 증가 */
-            padding: 10px; /* 패딩 추가 */
-            margin: 5px; /* 마진 추가 */
-        }
-        button {
-            cursor: pointer; /* 버튼 위에 마우스를 올렸을 때 커서 변경 */
-            transition: background-color 0.3s; /* 배경 색상 변화 애니메이션 */
-        }
-        button:hover {
-            background-color: #ddd; /* 호버 시 배경 색상 변경 */
-        }
-        #protectedImage {
-            display: none; /* 초기 상태에서 이미지 숨김 */
-            max-width: 90%; /* 이미지 최대 너비 설정 */
-            max-height: 90vh; /* 이미지 최대 높이 설정 */
-            margin-top: 20px; /* 이미지 위쪽 마진 설정 */
-        }
-    </style>
-    <script>
-        function showImage() {
-            var password = document.getElementById('password').value;
-            
-            if (password == '1234') {
-                document.getElementById('protectedImage').style.display = 'block';
-            } else {
-                alert('The password is incorrect!');
-            }
-        }
-
-        // 엔터 키 입력 시 showImage 함수 호출
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('password').addEventListener('keypress', function(event) {
-                if (event.key === 'Enter') {
-                    showImage();
-                }
-            });
-        });
-    </script>
+<meta charset="UTF-8">
+<title>비밀번호 보호 이미지 보기</title>
+<style>
+  body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+  }
+  #passwordInput {
+    width: 200px;
+    height: 40px;
+    font-size: 20px;
+    text-align: center;
+  }
+  #imageView {
+    display: none; /* 초기 상태에서 이미지는 숨겨져 있음 */
+    position: fixed; /* Fullscreen view */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background-color: black; /* 이미지 배경 */
+  }
+</style>
 </head>
 <body>
-    <div>
-        <input type="password" id="password" placeholder="Enter password">
-        <button onclick="showImage()">Submit</button>
-        <img id="protectedImage" src="image.png" alt="Secret Image">
-    </div>
+
+<input type="password" id="passwordInput" placeholder="비밀번호 입력" autofocus>
+
+<img src="image.png" id="imageView">
+
+<script>
+document.getElementById('passwordInput').addEventListener('keyup', function(e) {
+  if(e.target.value === '0527') {
+    // 비밀번호가 맞을 경우
+    document.getElementById('passwordInput').style.display = 'none'; // 입력 칸 숨기기
+    document.getElementById('imageView').style.display = 'block'; // 이미지 보여주기
+  }
+});
+</script>
+
 </body>
 </html>
