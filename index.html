@@ -26,6 +26,7 @@
         #protectedImage {
             display: none; /* 초기 상태에서 이미지 숨김 */
             max-width: 90%; /* 이미지 최대 너비 설정 */
+            max-height: 90vh; /* 이미지 최대 높이 설정 */
             margin-top: 20px; /* 이미지 위쪽 마진 설정 */
         }
     </style>
@@ -33,7 +34,7 @@
         function showImage() {
             var password = document.getElementById('password').value;
             
-            if (password == '0527') {
+            if (password == '1234') {
                 document.getElementById('protectedImage').style.display = 'block';
             } else {
                 alert('The password is incorrect!');
