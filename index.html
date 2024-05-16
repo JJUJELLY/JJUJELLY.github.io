@@ -1,42 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <title>Password Protected Image</title>
     <style>
         body {
-            text-align: center;
+            text-align: center; /* 중앙 정렬 */
+            margin-top: 50px; /* 상단 여백 */
         }
         input[type="password"], button {
-            font-size: 20px;
-            padding: 10px;
-            margin: 10px;
+            font-size: 20px; /* 폰트 크기 */
+            padding: 10px; /* 패딩 */
+            margin: 10px; /* 마진 */
         }
-        #imageContainer {
-            display: none; /* 이미지와 컨테이너를 초기에는 숨깁니다. */
-            justify-content: center;
+        input[type="password"] {
+            width: 20%; /* 입력 칸 너비 */
         }
         #protectedImage {
-            max-width: 90%; /* 이미지의 최대 너비를 화면의 90%로 제한합니다. */
-            max-height: 500px; /* 이미지의 최대 높이를 500px로 제한합니다. */
-            margin-top: 20px;
+            display: none; /* 기본적으로 이미지 숨김 */
+            width: 80%; /* 이미지 너비 */
+            margin-top: 20px; /* 이미지 상단 여백 */
         }
     </style>
     <script>
         function showImage() {
             var password = document.getElementById('password').value;
-            if (password == '0527') {
-                document.getElementById('imageContainer').style.display = 'flex';
-                document.getElementById('password').style.display = 'none';
-                document.getElementById('submitBtn').style.display = 'none';
+            if (password == '0527') { // 비밀번호를 '0527'로 변경
+                document.getElementById('protectedImage').style.display = 'block';
             } else {
                 alert('비밀번호가 잘못되었습니다!');
             }
         }
-        
-        document.addEventListener('DOMContentLoaded', function() {
-            var input = document.getElementById('password');
-            input.addEventListener('keypress', function(event) {
+
+        document.addEventListener("DOMContentLoaded", function() {
+            // Enter 키 이벤트 추가
+            document.getElementById('password').addEventListener('keypress', function(event) {
                 if (event.key === "Enter") {
                     showImage();
                 }
@@ -47,9 +45,7 @@
 <body>
     <h1>비밀번호로 보호된 이미지</h1>
     <input type="password" id="password" placeholder="비밀번호 입력">
-    <button id="submitBtn" onclick="showImage()">제출</button>
-    <div id="imageContainer">
-        <img id="protectedImage" src="image.png" alt="비밀 이미지">
-    </div>
+    <button onclick="showImage()">제출</button>
+    <img id="protectedImage" src="image.png" alt="비밀 이미지">
 </body>
 </html>
