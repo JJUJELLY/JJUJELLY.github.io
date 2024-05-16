@@ -3,26 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <title>Password Protected Image</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        #password, button {
+            font-size: 20px; /* 폰트 사이즈 증가 */
+            padding: 10px; /* 패딩 추가 */
+            margin: 5px; /* 마진 추가 */
+        }
+        button {
+            cursor: pointer; /* 버튼 위에 마우스를 올렸을 때 커서 변경 */
+            transition: background-color 0.3s; /* 배경 색상 변화 애니메이션 */
+        }
+        button:hover {
+            background-color: #ddd; /* 호버 시 배경 색상 변경 */
+        }
+        #protectedImage {
+            display: none; /* 초기 상태에서 이미지 숨김 */
+            max-width: 90%; /* 이미지 최대 너비 설정 */
+            margin-top: 20px; /* 이미지 위쪽 마진 설정 */
+        }
+    </style>
     <script>
         function showImage() {
-            // 사용자 입력값을 가져옵니다.
             var password = document.getElementById('password').value;
             
-            // 비밀번호가 1234인지 확인합니다.
-            if (password == '1234') {
-                // 비밀번호가 맞으면 이미지를 보여줍니다.
+            if (password == '0527') {
                 document.getElementById('protectedImage').style.display = 'block';
             } else {
-                // 비밀번호가 틀리면 경고 메시지를 보여줍니다.
-                alert('비밀번호가 잘못되었습니다!');
+                alert('The password is incorrect!');
             }
         }
     </script>
 </head>
 <body>
-    <h1>비밀번호로 보호된 이미지</h1>
-    <input type="password" id="password" placeholder="비밀번호 입력">
-    <button onclick="showImage()">제출</button>
-    <img id="protectedImage" src="image.png" alt="비밀 이미지" style="display:none;">
+    <div>
+        <input type="password" id="password" placeholder="Enter password">
+        <button onclick="showImage()">Submit</button>
+        <img id="protectedImage" src="image.png" alt="Secret Image">
+    </div>
 </body>
 </html>
