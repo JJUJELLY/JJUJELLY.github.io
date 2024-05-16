@@ -1,11 +1,28 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
     <meta charset="UTF-8">
-    <title>이미지 예제</title>
+    <title>Password Protected Image</title>
+    <script>
+        function showImage() {
+            // 사용자 입력값을 가져옵니다.
+            var password = document.getElementById('password').value;
+            
+            // 비밀번호가 1234인지 확인합니다.
+            if (password == '1234') {
+                // 비밀번호가 맞으면 이미지를 보여줍니다.
+                document.getElementById('protectedImage').style.display = 'block';
+            } else {
+                // 비밀번호가 틀리면 경고 메시지를 보여줍니다.
+                alert('비밀번호가 잘못되었습니다!');
+            }
+        }
+    </script>
 </head>
 <body>
-    <h1>이미지 보기 예제</h1>
-    <img src="JJUJELLY.github.io/image.png" alt="이미지를 불러올 수 없습니다">
+    <h1>비밀번호로 보호된 이미지</h1>
+    <input type="password" id="password" placeholder="비밀번호 입력">
+    <button onclick="showImage()">제출</button>
+    <img id="protectedImage" src="image.png" alt="비밀 이미지" style="display:none;">
 </body>
 </html>
